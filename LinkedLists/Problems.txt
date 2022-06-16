@@ -1,7 +1,11 @@
 1. Reverse LL -> 14-06-2022
+    O(n)
 2. Middle of LL -> 14-06-2022
+    O(length/2)
 3. Merge Two Sorted LL -> 15-06-2022
+    O(max of lengths of both lists)
 4. AddTwoNumbers LL -> 16-06-2022
+    O(max(lengths of both lists))
     Two numbers are represented as LL, with their LSD as first element.
     Cases: length of both ll is same, length is different (take care of last carry), carry is still left after the length of both ll being traversed. Make carry 0 after adding.
 Always check if head is NULL or not.
