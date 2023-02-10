@@ -1,6 +1,12 @@
 import java.util.*;
 
 public class firstMissingPositive {
+    public static void print(int[] nums){
+        System.out.println("---------------");
+        for(int x: nums){
+            System.out.print(x + " ");
+        }System.out.println("-----------------");
+    }
 
     public static int firstMissingPositive(int[] nums) {
         int n = nums.length;
@@ -9,6 +15,7 @@ public class firstMissingPositive {
                 int temp = nums[i];
                 nums[i] = nums[nums[i]-1];
                 nums[temp-1] = temp;
+                print(nums);
             }
         }
 
