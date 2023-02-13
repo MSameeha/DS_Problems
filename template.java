@@ -37,7 +37,7 @@ public class template {
         // sc.close();
     // }
     // // ------------------------------------------------------------------------------
-    // Input 2d integer matrix
+    // Input 2d matrix
 
     // public static void main(String[] args){
     //     Scanner sc = new Scanner(System.in);
@@ -65,4 +65,29 @@ public class template {
     //     sc.close();
     // }
     // --------------------------------------------------------------------------------------
+    //LINKED LIST INPUT AND OUTPUT
+    // class ListNode {
+    //     int val;
+    //     ListNode next;
+    //     ListNode() {}
+    //     ListNode(int val) { this.val = val; }
+    //     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    // }
+    // public static void main(String[] args){
+    //     ListNode head = new ListNode(10);
+    //     head.next = new ListNode(20);
+    //     head.next.next = new ListNode(30);
+    //     head.next.next.next = new ListNode(40);
+    //     head.next.next.next.next = new ListNode(50);
+    
+    //     Scanner sc = new Scanner(System.in);
+    //     int n = sc.nextInt();
+    //     ListNode headNew = removeNthFromEnd(head, n);
+
+    //     while(headNew != null){
+    //         System.out.print(headNew.val + " ");
+    //         headNew = headNew.next;
+    //     }System.out.println();
+    // }
+    // ---------------------------------------------------------------------------------------------
 }
