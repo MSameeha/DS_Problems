@@ -4,57 +4,71 @@ import java.util.*;
 
 class MyCircularDeque {
 
-    int size;
-    int[] data;
-    int rear, front;
+    int[] buffer;
+    int capacity, front, rear, size;
 
     public MyCircularDeque(int k) {
-        data = new int[k];
+        buffer = new int[k];
+        capacity = k;
         size = 0;
-        rear = k-1;
-        front = 0;
+        front = k-1;
+        rear = 0;
     }
     
     public boolean insertFront(int value) {
-        if(data.length == size) return false;
-        data[front] = value;
-        front = (front + 1) % data.length;
+        if(size == capacity) return false;
+
+        buffer[front] = value;
+        front = (front - 1 + capacity) % capacity;
         size++;
         return true;
     }
     
     public boolean insertLast(int value) {
-        if(data.length == size) return false;
-        data[rear] = value;
-        rear = (rear - 1 + data.length) % data.length;
+        if(capacity == size) return false;
+        
+        buffer[rear] = value;
+        rear = (rear + 1) % capacity;
         size++;
+
         return true;
     }
     
     public boolean deleteFront() {
-        
+        if(size == 0) return false;
+
+        front = (front+1) % capacity;
+        size--;
+
+        return true;
     }
     
     public boolean deleteLast() {
-        
+        if(size == 0) return false;
+
+        rear = (rear - 1 + capacity) % capacity;
+        size--;
+        return true;
     }
     
     public int getFront() {
         if(size == 0) return -1;
-        return data[(front - 1 + data.length) % data.length];
+
+        return buffer[(front+1)%capacity];
     }
     
     public int getRear() {
         if(size == 0) return -1;
-        return data[()]
+
+        return buffer[(rear-1+capacity)%capacity];
     }
     
     public boolean isEmpty() {
-        
+        return size == 0;
     }
     
     public boolean isFull() {
-        
+        return size == capacity;
     }
 }
 

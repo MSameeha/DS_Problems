@@ -1,3 +1,4 @@
+package LinkedLists;
 import java.util.*;
 
 class BrowserHistory {
