@@ -1,0 +1,17 @@
+1. Find Duplicate: Use indexes coz range of array elements is 1, n-1.
+    check if arr[i] > 0 then check arr[arr[i]] > 0 similarly for -1*arr[i]
+    index should be positive.
+    O(n)
+
+2. Kadane's Algo
+    O(n)
+
+3. Sort 0,1,2 it'll take O(2*n) if we use frequency variable 
+                can do it in O(n) if we use the dutch national flag Algo
+
+4. Best Time to buy and sell
+    Since we only need max profit, just keep searching for the min element and for every next element
+    that is greater than min, calculate the diff and store the max diff. (min should always
+    come before max.)
+
+5. Rotate Image -> Transpose swap(mat[i][j], mat[j][i]) and then reverse mat[i]

@@ -1,3 +1,9 @@
+0. LLOperations -> 14-07-2022
+    We're considering zero indexing
+    Assuming the head is never NULL
+    Remember to free when u delete coz it's cpp
+    For delete we'll send head as a call by address parameter to reflect the changes in head pointer
+    insertFirst O(1), insertLast O(n), insertatk O(k), deleteatIndexO(k), delete when node is given O(k), delete when node is given O(1), display O(1).
 1. Reverse LL -> 14-06-2022
     O(n)
 2. Middle of LL -> 14-06-2022
