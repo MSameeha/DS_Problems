@@ -1,44 +1,87 @@
 import java.util.*;
-
+class Node {
+    int data;
+    Node left, right;
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
 public class boundaryTraversalOfBinaryTree {
-    
-    static List <Integer> ans = new ArrayList<>();
-
-    static void leftTraversal(TreeNode root){
-        if(root.left != null && root.right != null)
-            ans.add(root.val);
-
-        if(root.left != null) leftTraversal(root.left);
-        else leftTraversal(root.right);
+    static Boolean isLeaf(Node root) {
+        return (root.left == null) && (root.right == null);
     }
 
-    static void inorder(TreeNode root){
-        if(root.left == null && root.right == null)
-            ans.add(root.val);
-            
-        inorder(root.left);
-        inorder(root.right);
+    static void addLeftBoundary(Node root, ArrayList < Integer > res) {
+        Node cur = root.left;
+        while (cur != null) {
+            if (isLeaf(cur) == false) res.add(cur.data);
+            if (cur.left != null) cur = cur.left;
+            else cur = cur.right;
+        }
     }
-
-    static void rightTraversal(TreeNode root){
-        if(root.left != null && root.right != null){
-            res.add(root.val);
+    static void addRightBoundary(Node root, ArrayList < Integer > res) {
+        Node cur = root.right;
+        ArrayList < Integer > tmp = new ArrayList < Integer > ();
+        while (cur != null) {
+            if (isLeaf(cur) == false) tmp.add(cur.data);
+            if (cur.right != null) cur = cur.right;
+            else cur = cur.left;
+        }
+        int i;
+        for (i = tmp.size() - 1; i >= 0; --i) {
+            res.add(tmp.get(i));
         }
     }
 
-    static void boundaryTraversal(TreeNode root){
-        leftTraversal(root);
-        inorder(root);
-
-        List<Integer> res = new ArrayList<>();
-        rightTraversal(root, res);
-
-        for(int i = res.size()-1; i >= 1; i--){
-            
+    static void addLeaves(Node root, ArrayList < Integer > res) {
+        if (isLeaf(root)) {
+            res.add(root.data);
+            return;
         }
+        if (root.left != null) addLeaves(root.left, res);
+        if (root.right != null) addLeaves(root.right, res);
+    }
+    static ArrayList < Integer > printBoundary(Node node) {
+        ArrayList < Integer > ans = new ArrayList < Integer > ();
+        if (isLeaf(node) == false) ans.add(node.data);
+        addLeftBoundary(node, ans);
+        addLeaves(node, ans);
+        addRightBoundary(node, ans);
+        return ans;
     }
 
-    public static void main(String[] args) {
-        
+    public static void main(String args[]) {
+
+        Node root = new Node(4);
+        root.left = new Node(10);
+        root.left.left = new Node(5);
+        root.left.left.right = new Node(6);
+        root.left.left.right.left = new Node(8);
+        root.left.left.right.right = new Node(8);
+        root.left.left.right.left.left = new Node(11);
+        root.left.left.right.left.left.left = new Node(3);
+        root.left.left.right.left.left.left.left = new Node(5);
+        root.left.left.right.left.left.left.right = new Node(8);
+        root.left.left.right.right.left = new Node(3);
+        root.left.left.right.right.right = new Node(4);
+        root.left.left.right.right.left.left = new Node(8);
+        root.left.left.right.right.left.right = new Node(6);
+        root.left.left.right.right.right.right = new Node(11);
+        root.left.right = new Node(5);
+        root.left.right.left = new Node(7);
+        root.left.right.left.right = new Node(8);
+        root.left.right.left.right.right = new Node(1);
+        root.left.right.left.right.right.left = new Node(11);
+
+        ArrayList < Integer > boundaryTraversal;
+        boundaryTraversal = printBoundary(root);
+
+        System.out.println("The Boundary Traversal is : ");
+        for (int i = 0; i < boundaryTraversal.size(); i++) {
+            System.out.print(boundaryTraversal.get(i) + " ");
+        }
+
     }
 }
