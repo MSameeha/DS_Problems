@@ -9,7 +9,7 @@ void dijkstra(vector<pair<int, int>> graph[], int numberOfNodes, int numberOfEdg
     pq.push(make_pair(0, source));
 
     while(!pq.empty()){
-        int dist = pq.top().first;
+        int dist = pq.top().first; 
         int prev = pq.top().second;
 
         pq.pop();
