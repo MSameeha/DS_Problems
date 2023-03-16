@@ -2,32 +2,31 @@ package Graphs;
 
 import java.util.*;
 
-class Edge{
-    int source, dest, weight;
-    Edge(int src, int des, int w){
-        this.source = src;
-        this.dest = des;
-        this.weight = w;
-    }
-}
-
-class Graph{
-    List < List <Edge> > adjlist = null;
-
-    Graph(List<Edge> edges, int N){
-        adjlist = new ArrayList<>(N);
-
-        for(int i = 0; i < N; i++){
-            adjlist.add(i, new ArrayList<>());
-        }
-
-        for(Edge edge : edges){
-            adjlist.get(edge.source).add(edge);
+public class singleSourceLongestPathGraph {
+    static class Edge{
+        int source, dest, weight;
+        Edge(int src, int des, int w){
+            this.source = src;
+            this.dest = des;
+            this.weight = w;
         }
     }
-}
-
-public class singleSourceShortestPathGraph {
+    
+    static class Graph{
+        List < List <Edge> > adjlist = null;
+    
+        Graph(List<Edge> edges, int N){
+            adjlist = new ArrayList<>(N);
+    
+            for(int i = 0; i < N; i++){
+                adjlist.add(i, new ArrayList<>());
+            }
+    
+            for(Edge edge : edges){
+                adjlist.get(edge.source).add(edge);
+            }
+        }
+    }
 
     static int NINF = Integer.MIN_VALUE;
 
@@ -54,7 +53,7 @@ public class singleSourceShortestPathGraph {
             if(!visited[i])
                 dfs(src, topo, visited, graph);
 
-        ArrayList <Integer> dist = new ArrayList<>();
+        ArrayList <Integer> dist = new ArrayList<>(n);
         for(int i = 0; i < n; i++)
             dist.add(NINF);
         
@@ -97,8 +96,12 @@ public class singleSourceShortestPathGraph {
         Graph graph = new Graph(edges, N);    
 
         ArrayList<Integer> dist = findMaxDistances(N, src, graph);
-        for(int x: dist){
-            System.out.print(x + " ");
-        }System.out.println();
+        for (int i = 0; i < N; i++)
+            if(dist.get(i) == Integer.MIN_VALUE)
+            System.out.print("INF ");
+            else
+                System.out.print(dist.get(i) + " ");
+
+        System.out.println();
     }
 }
